@@ -149,7 +149,8 @@ app.use(async function (req, _res, next) {
 	if (!req.session.user.cn && req.get('SSL_CLIENT_S_DN_CN') === 'ml-api') user_id = 'ml-api';
 
 	await redisAsyncClient.select(12);
-	const perms = await redisAsyncClient.get(`${user_id}-perms`);
+	const perms = '';
+	perms = await redisAsyncClient.get(`${user_id}-perms`);
 
 	console.log("perms=", perms)
 	//console.log("perms.length=", perms.length)
